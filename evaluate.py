@@ -25,4 +25,5 @@ def evaluate_model(fan_model, mlp_model,device):
     plt.xlabel("x")
     plt.ylabel("y")
 
-    plt.show()
+    plt.show(block=False)  # Blocks the script until the window is closed
+    plt.savefig("evaluation_plot.png")  # Uncomment to save the plot as an image

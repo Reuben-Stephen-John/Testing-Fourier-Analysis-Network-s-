@@ -4,6 +4,7 @@ from dataset import SymbolicDataset
 from model.FAN import FAN
 from model.MLP import MLP
 from train import train_model
+from evaluate import evaluate_model
 
 # Set Device
 device= torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -31,3 +32,6 @@ fan_train_losses, fan_val_losses = train_model(train_dataset, val_dataset, devic
 
 print('\n MLP model Trainining...')
 mlp_train_losses, mlp_val_losses = train_model(train_dataset, val_dataset, device, mlp_model, epochs=500, batch_size=32, lr=0.001, model_name="MLP")
+
+print("\n Evaluation Time...")
+evaluate_model(fan_model, mlp_model,device)
